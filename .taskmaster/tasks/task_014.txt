@@ -1,0 +1,43 @@
+# Task ID: 14
+# Title: Phase 1: SwiftUI Card Content Display and Visual Hierarchy
+# Status: pending
+# Dependencies: 13
+# Priority: critical
+# Description: Implement advanced card content display with auto-extracted titles, content previews, and visual indicators
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Implement Auto-Title Extraction from Content [pending]
+### Dependencies: None
+### Description: Auto-extract meaningful titles from first line or H1 markdown content
+### Details:
+
+
+## 2. Create Content Preview with Line Limits [pending]
+### Dependencies: 14.1
+### Description: Show 2-3 lines of content preview with .lineLimit(3) and proper truncation
+### Details:
+
+
+## 3. Build Connection Count Badges with SF Symbols [pending]
+### Dependencies: 14.1
+### Description: Display connection count badges using HStack with SF Symbols and jade color
+### Details:
+
+
+## 4. Implement Visual Tag Indicators with Jade Color Coding [pending]
+### Dependencies: 14.3
+### Description: Add visual tag indicators with jade color coding and proper visual hierarchy
+### Details:
+
+
+## 5. Create Note Health Indicators and Time Display [pending]
+### Dependencies: 14.4
+### Description: Show note health indicators and display relative time formatting using RelativeDateTimeFormatter
+### Details:
+
+

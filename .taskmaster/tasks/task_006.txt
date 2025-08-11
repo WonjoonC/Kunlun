@@ -1,0 +1,43 @@
+# Task ID: 6
+# Title: Build Individual Note Editor with Live Markdown
+# Status: pending
+# Dependencies: 2, 3
+# Priority: high
+# Description: Create the distraction-free note editing interface with real-time markdown rendering and performance optimization
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Create Distraction-Free Writing Environment [pending]
+### Dependencies: None
+### Description: Implement clean, minimal writing interface with generous margins and focus mode
+### Details:
+
+
+## 2. Implement Real-Time Markdown Rendering [pending]
+### Dependencies: 6.1
+### Description: Build live markdown preview with AttributedString for instant formatting updates
+### Details:
+
+
+## 3. Add Markdown Formatting Controls [pending]
+### Dependencies: 6.2
+### Description: Implement toolbar with common markdown formatting options (headers, bold, italic, lists)
+### Details:
+
+
+## 4. Optimize TextEditor Performance [pending]
+### Dependencies: 6.3
+### Description: Ensure zero-lag typing and smooth scrolling with performance optimizations
+### Details:
+
+
+## 5. Implement Auto-Save and Recovery [pending]
+### Dependencies: 6.4
+### Description: Add automatic saving every 2 seconds with recovery mechanisms
+### Details:
+
+

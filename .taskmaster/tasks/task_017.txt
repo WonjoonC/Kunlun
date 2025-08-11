@@ -1,0 +1,43 @@
+# Task ID: 17
+# Title: Phase 2: Revolutionary Individual Note Screen - Distraction-Free Writing
+# Status: pending
+# Dependencies: 16
+# Priority: critical
+# Description: Create distraction-free SwiftUI writing environment with clean visual design and seamless editor experience
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Create Clean Visual Design with Generous Margins [pending]
+### Dependencies: None
+### Description: Implement generous margins and clean visual design using the three-color system
+### Details:
+
+
+## 2. Implement SF Pro Typography System [pending]
+### Dependencies: 17.1
+### Description: Use SF Pro system font with proper font weights and line spacing for optimal readability
+### Details:
+
+
+## 3. Add Focus Mode and Conditional UI [pending]
+### Dependencies: 17.2
+### Description: Implement focus mode using @FocusState and conditional UI for distraction-free writing
+### Details:
+
+
+## 4. Optimize TextEditor for Zero-Lag Typing [pending]
+### Dependencies: 17.3
+### Description: Ensure zero-lag typing with TextEditor optimization and efficient state management
+### Details:
+
+
+## 5. Implement Auto-Save and Performance Features [pending]
+### Dependencies: 17.4
+### Description: Add auto-save every 2 seconds and ensure smooth scrolling with native ScrollView
+### Details:
+
+

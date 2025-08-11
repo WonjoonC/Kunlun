@@ -1,0 +1,43 @@
+# Task ID: 4
+# Title: Create Notes List Screen with Performance Optimization
+# Status: pending
+# Dependencies: 2, 3
+# Priority: high
+# Description: Build the main notes list interface with NoteCard components, infinite scroll, and 60fps performance guarantee
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Design and Implement NoteCard Component [pending]
+### Dependencies: None
+### Description: Create the NoteCard SwiftUI view component with title, content preview, connection count in jade color, and last modified date display
+### Details:
+
+
+## 2. Implement LazyVStack with Batch Loading System [pending]
+### Dependencies: 4.1
+### Description: Build the LazyVStack container with 50 notes per batch loading mechanism and infinite scroll functionality
+### Details:
+
+
+## 3. Implement Touch Interactions and Gesture Handling [pending]
+### Dependencies: 4.1
+### Description: Add comprehensive touch interactions including tap to open, long press context menu, and swipe gestures for quick actions
+### Details:
+
+
+## 4. Create Responsive Layout System [pending]
+### Dependencies: 4.2
+### Description: Build adaptive layout that switches between single-column (iPhone) and two-column (iPad) with 32pt margins
+### Details:
+
+
+## 5. Optimize Performance for 60fps Guarantee [pending]
+### Dependencies: 4.2, 4.3, 4.4
+### Description: Implement performance optimizations to ensure <50ms note preview loading and maintain 60fps scrolling performance
+### Details:
+
+

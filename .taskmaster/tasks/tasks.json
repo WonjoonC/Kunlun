@@ -1,0 +1,1207 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Setup SwiftUI Project with Core Data and Firebase Firestore Integration",
+        "description": "Initialize the SwiftUI project with Core Data stack and Firebase Firestore configuration for the Kunlun Zettelkasten app",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create SwiftUI Project with iOS 17+ Configuration",
+            "description": "Initialize new SwiftUI project with proper iOS 17+ target configuration and basic project structure",
+            "dependencies": [],
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Define Core Data Model and Entity Structure",
+            "description": "Create Core Data model file with Note, NoteLink, and Tag entities as specified in PRD",
+            "dependencies": [
+              "1.1"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 3,
+            "title": "Configure Firebase Project and Firestore",
+            "description": "Create Firebase project, add iOS app, download and include GoogleService-Info.plist, enable Firestore, and set up least-privilege Security Rules for development.",
+            "dependencies": [
+              "1.2"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 4,
+            "title": "Implement Firestore Client and Integration",
+            "description": "Add Firebase SDKs, initialize Firebase in App startup, and create a FirestoreClient wrapper for reads/writes and listeners.",
+            "dependencies": [
+              "1.3"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 5,
+            "title": "Create SyncManager Class with Firestore Sync and History Tracking",
+            "description": "Implement SyncManager to mirror Core Data changes to Firestore using batched writes and snapshot listeners; track history for efficient delta sync.",
+            "dependencies": [
+              "1.4"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 6,
+            "title": "Setup SwiftUI Integration with @Model Classes and ModelContainer",
+            "description": "Configure proper SwiftUI integration using @Model classes and ModelContainer for seamless data binding",
+            "dependencies": [
+              "1.5"
+            ],
+            "status": "done"
+          }
+        ],
+        "complexityScore": 8,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 2,
+        "title": "Implement Three-Color Design System and Typography",
+        "description": "Create the ultra-minimalist design system using only black (#000000), white (#FFFFFF), and jade (#00A693) colors with SF Pro typography system",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define Color Palette with SwiftUI Extensions",
+            "description": "Create SwiftUI Color extensions for the three-color ultra-minimalist palette with proper naming conventions and accessibility support",
+            "dependencies": [],
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Implement SF Pro Typography System",
+            "description": "Create comprehensive typography system using SF Pro Text with all specified font sizes, weights, and SwiftUI text modifiers",
+            "dependencies": [
+              "2.1"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 3,
+            "title": "Create 8pt Grid Spacing Scale with View Modifiers",
+            "description": "Implement the complete 8pt grid spacing system with reusable SwiftUI view modifiers for consistent layout spacing",
+            "dependencies": [
+              "2.1"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 4,
+            "title": "Verify Accessibility Compliance and Contrast Ratios",
+            "description": "Test and validate accessibility compliance with WCAG standards, focusing on contrast ratios and color accessibility",
+            "dependencies": [
+              "2.1",
+              "2.2",
+              "2.3"
+            ],
+            "status": "done"
+          }
+        ],
+        "complexityScore": 5,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 3,
+        "title": "Build Core Data Models with Relationships",
+        "description": "Implement the complete Core Data model structure with Note, NoteLink, and Tag entities including all relationships and computed properties",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Note Entity with Properties and Computed Values",
+            "description": "Implement the Note @Model class with all required properties, computed properties, and UUID primary key",
+            "dependencies": [],
+            "status": "done",
+            "details": "<info added on 2025-08-11T13:34:18.986Z>\nSuccessfully implemented proper SwiftData @Relationship attributes for the Note entity:\n\n**What was implemented:**\n- Added @Relationship(deleteRule: .cascade) for tags array\n- Added @Relationship(deleteRule: .cascade) for outgoingLinks array  \n- Added @Relationship(deleteRule: .cascade) for incomingLinks array\n- Removed inverse parameters that were causing circular references\n- Build now succeeds without errors\n\n**Key changes made:**\n1. Note.swift: Added proper @Relationship attributes with cascade delete rules\n2. Tag.swift: Added @Relationship(deleteRule: .nullify) for notes array\n3. NoteLink.swift: Added @Relationship(deleteRule: .cascade) for source and target\n\n**Technical details:**\n- Used cascade delete for Note-Tag and Note-NoteLink relationships to ensure data integrity\n- Used nullify delete for Tag-Notes to prevent orphaned references\n- Avoided circular references by not using inverse parameters\n- All models now compile successfully with SwiftData integration\n\nThe Note entity now has proper SwiftData relationship configuration that will work correctly with the persistence layer.\n</info added on 2025-08-11T13:34:18.986Z>"
+          },
+          {
+            "id": 2,
+            "title": "Implement NoteLink Entity with Bidirectional Relationships",
+            "description": "Create NoteLink entity to manage connections between notes with proper relationship configuration",
+            "dependencies": [
+              "3.1"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 3,
+            "title": "Build Tag Entity with Usage Tracking",
+            "description": "Implement Tag entity with automatic usage counting and note relationships",
+            "dependencies": [
+              "3.1"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 4,
+            "title": "Configure Relationship Rules and Cascade Delete Behavior",
+            "description": "Set up proper cascade delete rules and relationship integrity constraints across all entities",
+            "dependencies": [
+              "3.1",
+              "3.2",
+              "3.3"
+            ],
+            "status": "done"
+          },
+          {
+            "id": 5,
+            "title": "Ensure Firestore Compatibility and Sync Validation",
+            "description": "Validate entity schemas and IDs map cleanly to Firestore documents/collections; ensure relationships are representable and syncable.",
+            "dependencies": [
+              "3.1",
+              "3.2",
+              "3.3",
+              "3.4"
+            ],
+            "status": "done"
+          }
+        ],
+        "complexityScore": 7,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 4,
+        "title": "Create Notes List Screen with Performance Optimization",
+        "description": "Build the main notes list interface with NoteCard components, infinite scroll, and 60fps performance guarantee",
+        "priority": "high",
+        "dependencies": [
+          2,
+          3
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design and Implement NoteCard Component",
+            "description": "Create the NoteCard SwiftUI view component with title, content preview, connection count in jade color, and last modified date display",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement LazyVStack with Batch Loading System",
+            "description": "Build the LazyVStack container with 50 notes per batch loading mechanism and infinite scroll functionality",
+            "dependencies": [
+              "4.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Implement Touch Interactions and Gesture Handling",
+            "description": "Add comprehensive touch interactions including tap to open, long press context menu, and swipe gestures for quick actions",
+            "dependencies": [
+              "4.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Create Responsive Layout System",
+            "description": "Build adaptive layout that switches between single-column (iPhone) and two-column (iPad) with 32pt margins",
+            "dependencies": [
+              "4.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Optimize Performance for 60fps Guarantee",
+            "description": "Implement performance optimizations to ensure <50ms note preview loading and maintain 60fps scrolling performance",
+            "dependencies": [
+              "4.2",
+              "4.3",
+              "4.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 7,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 5,
+        "title": "Implement Smart Organization and Filtering System",
+        "description": "Build intelligent note sorting, filtering, and discovery features with relevance scoring and automatic organization",
+        "priority": "medium",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Relevance Scoring Algorithm",
+            "description": "Build the core relevance scoring system that combines recency, connections, and user interaction metrics",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Build Multi-Criteria Sorting System",
+            "description": "Implement comprehensive sorting options with efficient algorithms for different criteria",
+            "dependencies": [
+              "5.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Create Universal Search and Filtering Interface",
+            "description": "Build the comprehensive search and filtering system with multiple filter types",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement Discovery Features for Random and Forgotten Notes",
+            "description": "Build intelligent note discovery system for surfacing random and forgotten content",
+            "dependencies": [
+              "5.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Build Connection Opportunity Suggestions System",
+            "description": "Implement AI-like features for suggesting potential connections and similar notes",
+            "dependencies": [
+              "5.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Optimize Performance for Sub-100ms Response Times",
+            "description": "Implement comprehensive performance optimizations to meet <100ms response time requirement",
+            "dependencies": [
+              "5.2",
+              "5.3",
+              "5.4",
+              "5.5"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 9,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 6,
+        "title": "Build Individual Note Editor with Live Markdown",
+        "description": "Create the distraction-free note editing interface with real-time markdown rendering and performance optimization",
+        "priority": "high",
+        "dependencies": [
+          2,
+          3
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Distraction-Free Writing Environment",
+            "description": "Implement clean, minimal writing interface with generous margins and focus mode",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement Real-Time Markdown Rendering",
+            "description": "Build live markdown preview with AttributedString for instant formatting updates",
+            "dependencies": [
+              "6.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Add Markdown Formatting Controls",
+            "description": "Implement toolbar with common markdown formatting options (headers, bold, italic, lists)",
+            "dependencies": [
+              "6.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Optimize TextEditor Performance",
+            "description": "Ensure zero-lag typing and smooth scrolling with performance optimizations",
+            "dependencies": [
+              "6.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Implement Auto-Save and Recovery",
+            "description": "Add automatic saving every 2 seconds with recovery mechanisms",
+            "dependencies": [
+              "6.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 8,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 7,
+        "title": "Implement Intelligent Wiki-Style Linking System",
+        "description": "Build the autocomplete linking system with fuzzy search and bidirectional link creation",
+        "priority": "high",
+        "dependencies": [
+          6
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create LinkAutocomplete UI Component",
+            "description": "Build the autocomplete dropdown interface triggered by [[ input with visual styling and interaction handling",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement Fuzzy Search Algorithm with Typo Tolerance",
+            "description": "Build fuzzy search engine for note titles with typo tolerance and relevance ranking",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Build Bidirectional Link Creation Engine",
+            "description": "Implement LinkingEngine class for creating and managing bidirectional note connections",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement TF-IDF Similarity for Link Suggestions",
+            "description": "Build content analysis system using TF-IDF to suggest relevant note connections",
+            "dependencies": [
+              "7.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Create Automatic Backlink Generation System",
+            "description": "Build system to automatically detect and create backlinks when notes reference each other",
+            "dependencies": [
+              "7.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Optimize Performance for Sub-100ms Response Time",
+            "description": "Implement performance optimizations to ensure all linking operations complete within 100ms",
+            "dependencies": [
+              "7.1",
+              "7.2",
+              "7.4",
+              "7.5"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 9,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 8,
+        "title": "Create Advanced Tag System with Autocomplete",
+        "description": "Build the tag management system with visual design, autocomplete, and usage tracking",
+        "priority": "medium",
+        "dependencies": [
+          6,
+          7
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement TagAutocomplete Interface with Horizontal Scroll",
+            "description": "Create the TagAutocomplete view component with horizontal scrolling functionality for suggested tags",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Design Tag Visual Styling and Selection Interface",
+            "description": "Implement the visual design system for tags including jade coloring and selection states",
+            "dependencies": [
+              "8.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Build Usage Tracking and Intelligent Suggestions System",
+            "description": "Implement tag usage tracking and intelligent suggestion algorithms",
+            "dependencies": [
+              "8.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Integrate Content-Based Tag Analysis and Filtering",
+            "description": "Implement content analysis for automatic tag suggestions and clickable filtering functionality",
+            "dependencies": [
+              "8.2",
+              "8.3"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 6,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 9,
+        "title": "Build Universal Search with Full-Text Indexing",
+        "description": "Implement the high-performance search system with instant results and advanced filtering capabilities",
+        "priority": "high",
+        "dependencies": [
+          3,
+          5
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create UniversalSearch UI with Search Field and Filters",
+            "description": "Build the main search interface with magnifying glass icon, search field, and filter controls",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement Full-Text Search with Core Data Predicates",
+            "description": "Build the core search functionality using Core Data predicates for title and content matching",
+            "dependencies": [
+              "9.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Build Search Result Highlighting and Ranking System",
+            "description": "Create SearchResultRow component with query highlighting and implement relevance-based ranking",
+            "dependencies": [
+              "9.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Integrate Advanced Filtering System",
+            "description": "Implement comprehensive filtering options including date ranges, tags, and connection density",
+            "dependencies": [
+              "9.1",
+              "9.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Optimize Performance for 100,000+ Notes",
+            "description": "Implement performance optimizations to achieve <100ms search response time with large datasets",
+            "dependencies": [
+              "9.2",
+              "9.3",
+              "9.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 8,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 10,
+        "title": "Implement Firestore Sync with Conflict Resolution",
+        "description": "Build robust cloud synchronization system with efficient delta sync and conflict resolution using Firebase Firestore",
+        "priority": "high",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Enhanced SyncManager with Firestore Operations",
+            "description": "Implement CRUD, batched writes, and real-time listeners for Note, NoteLink, and Tag.",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Delta Sync Implementation",
+            "description": "Implement efficient delta synchronization to minimize data transfer and improve sync performance with Firestore",
+            "dependencies": [
+              "10.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Conflict Resolution Logic and UI",
+            "description": "Build comprehensive conflict resolution system with user intervention capabilities using Firestore",
+            "dependencies": [
+              "10.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Background Sync with Progress Indication",
+            "description": "Implement background synchronization with comprehensive progress tracking and user feedback using Firestore",
+            "dependencies": [
+              "10.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Error Handling and Recovery",
+            "description": "Build robust error handling and recovery mechanisms for all Firestore sync operations",
+            "dependencies": [
+              "10.3",
+              "10.4"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Battery Optimization and Smart Scheduling",
+            "description": "Implement intelligent sync scheduling and battery optimization strategies for Firestore",
+            "dependencies": [
+              "10.4",
+              "10.5"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 9,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 11,
+        "title": "Add Lightning-Fast Note Creation with Floating Action Button",
+        "description": "Implement the quick note creation system with floating action button and optimized performance",
+        "priority": "medium",
+        "dependencies": [
+          6,
+          10
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create FloatingActionButton UI Component",
+            "description": "Design and implement the floating action button with jade circular background and proper positioning",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement Fast Note Creation with <200ms Response",
+            "description": "Build optimized createNewNote function with sub-200ms performance from tap to editor ready",
+            "dependencies": [
+              "11.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Build Auto-save System with 2-Second Intervals",
+            "description": "Implement efficient auto-save functionality with <50ms processing time every 2 seconds",
+            "dependencies": [
+              "11.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Add Dictation Support and Navigation Handling",
+            "description": "Integrate voice dictation functionality with proper navigation flow and error handling",
+            "dependencies": [
+              "11.2",
+              "11.3"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 6,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 12,
+        "title": "Performance Optimization and App Store Preparation",
+        "description": "Optimize app performance to meet all specified requirements and prepare for App Store submission",
+        "priority": "high",
+        "dependencies": [
+          4,
+          6,
+          9,
+          11
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Core Performance Optimizations",
+            "description": "Optimize app startup times, memory usage, and scrolling performance to meet specified requirements",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement Memory Management for Large Note Collections",
+            "description": "Create efficient memory management system for handling large datasets and note collections",
+            "dependencies": [
+              "12.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Create App Store Assets and Metadata",
+            "description": "Design and create all required App Store submission materials including icons, screenshots, and metadata",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement Analytics and Crash Reporting Systems",
+            "description": "Add comprehensive analytics tracking, crash reporting, and user feedback systems",
+            "dependencies": [
+              "12.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Ensure Accessibility Compliance and Battery Optimization",
+            "description": "Verify and implement accessibility features and optimize battery usage throughout the app",
+            "dependencies": [
+              "12.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Conduct Final Testing and Quality Assurance",
+            "description": "Perform comprehensive testing across all devices and scenarios to ensure App Store readiness",
+            "dependencies": [
+              "12.3",
+              "12.4",
+              "12.5"
+            ],
+            "status": "pending"
+          }
+        ],
+        "complexityScore": 8,
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 13,
+        "title": "Phase 1: Revolutionary Notes List Screen - LazyVGrid Masonry Layout",
+        "description": "Create dynamic card grid using LazyVGrid with flexible columns and variable card heights",
+        "priority": "critical",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Dynamic LazyVGrid with Flexible Columns",
+            "description": "Create dynamic card grid using LazyVGrid with flexible columns for responsive layout",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Create Variable Card Heights Based on Content",
+            "description": "Implement variable card heights ranging from 150pt to 400pt based on note content length",
+            "dependencies": [
+              "13.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Build Responsive Column System for Different Devices",
+            "description": "Implement responsive column system with 1 column for iPhone and 2-3 columns for iPad",
+            "dependencies": [
+              "13.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Add Smooth Card Animations and Elevation",
+            "description": "Implement smooth card animations using .animation(.easeInOut) and card elevation with .shadow() modifiers",
+            "dependencies": [
+              "13.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Optimize Performance for 50,000+ Notes",
+            "description": "Ensure sub-100ms list rendering performance with large datasets using efficient LazyVGrid implementation",
+            "dependencies": [
+              "13.1",
+              "13.2",
+              "13.3",
+              "13.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 14,
+        "title": "Phase 1: SwiftUI Card Content Display and Visual Hierarchy",
+        "description": "Implement advanced card content display with auto-extracted titles, content previews, and visual indicators",
+        "priority": "critical",
+        "dependencies": [
+          13
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Auto-Title Extraction from Content",
+            "description": "Auto-extract meaningful titles from first line or H1 markdown content",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Create Content Preview with Line Limits",
+            "description": "Show 2-3 lines of content preview with .lineLimit(3) and proper truncation",
+            "dependencies": [
+              "14.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Build Connection Count Badges with SF Symbols",
+            "description": "Display connection count badges using HStack with SF Symbols and jade color",
+            "dependencies": [
+              "14.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement Visual Tag Indicators with Jade Color Coding",
+            "description": "Add visual tag indicators with jade color coding and proper visual hierarchy",
+            "dependencies": [
+              "14.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Create Note Health Indicators and Time Display",
+            "description": "Show note health indicators and display relative time formatting using RelativeDateTimeFormatter",
+            "dependencies": [
+              "14.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 15,
+        "title": "Phase 1: Lightning-Fast Performance Architecture - Sub-100ms Rendering",
+        "description": "Implement sub-100ms list rendering with SwiftUI optimizations and efficient data management",
+        "priority": "critical",
+        "dependencies": [
+          14
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement LazyVStack for 50,000+ Notes",
+            "description": "Implement LazyVStack for efficient rendering of large note collections with proper performance optimization",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Optimize State Management for Performance",
+            "description": "Use @StateObject and @ObservedObject properly for optimal performance and memory management",
+            "dependencies": [
+              "15.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Implement Background Pre-loading with Task",
+            "description": "Pre-load note previews in background using Task and async/await for improved performance",
+            "dependencies": [
+              "15.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Add Caching and Drawing Optimizations",
+            "description": "Cache rendered card components with @State variables and optimize with .drawingGroup() for complex cards",
+            "dependencies": [
+              "15.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Implement Progressive Loading and Pagination",
+            "description": "Implement progressive loading with LazyVGrid pagination for optimal performance with large datasets",
+            "dependencies": [
+              "15.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 16,
+        "title": "Phase 1: Instant Search & Filtering with Sub-50ms Response",
+        "description": "Implement instant search and filtering with sub-50ms response times using Combine and Core Data optimization",
+        "priority": "critical",
+        "dependencies": [
+          15
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Sub-50ms Search with Combine",
+            "description": "Create search system with sub-50ms response time using @Published and Combine framework",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Build Fuzzy Search with NSPredicate and Core Data",
+            "description": "Implement fuzzy search with typo tolerance using NSPredicate and Core Data optimization",
+            "dependencies": [
+              "16.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Create Compound Predicate Search System",
+            "description": "Search in titles, content, and tags using compound predicates for comprehensive results",
+            "dependencies": [
+              "16.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement Search Term Highlighting",
+            "description": "Highlight search terms using AttributedString for improved search result visibility",
+            "dependencies": [
+              "16.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Add Search Suggestions and Caching",
+            "description": "Implement search suggestions using @StateObject view model and cache frequent queries with @AppStorage",
+            "dependencies": [
+              "16.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 17,
+        "title": "Phase 2: Revolutionary Individual Note Screen - Distraction-Free Writing",
+        "description": "Create distraction-free SwiftUI writing environment with clean visual design and seamless editor experience",
+        "priority": "critical",
+        "dependencies": [
+          16
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Clean Visual Design with Generous Margins",
+            "description": "Implement generous margins and clean visual design using the three-color system",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement SF Pro Typography System",
+            "description": "Use SF Pro system font with proper font weights and line spacing for optimal readability",
+            "dependencies": [
+              "17.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Add Focus Mode and Conditional UI",
+            "description": "Implement focus mode using @FocusState and conditional UI for distraction-free writing",
+            "dependencies": [
+              "17.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Optimize TextEditor for Zero-Lag Typing",
+            "description": "Ensure zero-lag typing with TextEditor optimization and efficient state management",
+            "dependencies": [
+              "17.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Implement Auto-Save and Performance Features",
+            "description": "Add auto-save every 2 seconds and ensure smooth scrolling with native ScrollView",
+            "dependencies": [
+              "17.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 18,
+        "title": "Phase 2: Intelligent Live Markdown Rendering with AttributedString",
+        "description": "Implement real-time markdown formatting with AttributedString and smart auto-completion features",
+        "priority": "critical",
+        "dependencies": [
+          17
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Real-Time Header Formatting",
+            "description": "Headers format instantly using AttributedString styling with proper visual hierarchy",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Add Bold and Italic Formatting",
+            "description": "Implement bold and italic formatting with real-time NSAttributedString updates",
+            "dependencies": [
+              "18.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Create Code Snippet and List Formatting",
+            "description": "Implement code snippets with monospace font and auto-formatting for lists",
+            "dependencies": [
+              "18.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement Blockquote and Advanced Formatting",
+            "description": "Add blockquote formatting with left border using overlay() modifier and other advanced features",
+            "dependencies": [
+              "18.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Add Smart Auto-Completion Features",
+            "description": "Implement auto-formatting for headers, lists, and other markdown elements",
+            "dependencies": [
+              "18.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 19,
+        "title": "Phase 2: Revolutionary Wiki-Style Linking System",
+        "description": "Implement instant SwiftUI link creation with auto-complete dropdown and intelligent link suggestions",
+        "priority": "critical",
+        "dependencies": [
+          18
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Wiki-Style Link Syntax Recognition",
+            "description": "Create [[Note Title]] syntax recognition using regex patterns and text analysis",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Build Auto-Complete Dropdown with Popover",
+            "description": "Create auto-complete dropdown using Popover with sub-100ms response time",
+            "dependencies": [
+              "19.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Implement Fuzzy Search with Fuse.swift",
+            "description": "Add fuzzy search matching using Fuse.swift or similar library for typo-tolerant search",
+            "dependencies": [
+              "19.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Create Visual Link Distinction System",
+            "description": "Implement visual distinction using jade color for existing links and support for alias links",
+            "dependencies": [
+              "19.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Implement AI-Powered Link Suggestions",
+            "description": "Add AI-powered suggestions using Core ML models and connection opportunity detection",
+            "dependencies": [
+              "19.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "details": null,
+        "testStrategy": null
+      },
+      {
+        "id": 20,
+        "title": "Phase 3: Seamless Firestore Sync with Offline-First Architecture",
+        "description": "Implement offline-first Core Data architecture with intelligent Firebase Firestore sync and conflict resolution",
+        "priority": "critical",
+        "dependencies": [
+          19
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Offline-First Core Data Architecture",
+            "description": "Create offline-first architecture with full editing capabilities using local Core Data stack",
+            "dependencies": [],
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Build Intelligent Firestore Sync Strategy",
+            "description": "Implement real-time sync using Firestore snapshot listeners with efficient change tracking.",
+            "dependencies": [
+              "20.1"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Create Conflict Detection and Resolution System",
+            "description": "Implement intelligent conflict detection with user-friendly merge interfaces using SwiftUI alerts",
+            "dependencies": [
+              "20.2"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Add Export and Data Management Features",
+            "description": "Implement export capabilities using DocumentGroup and comprehensive data management",
+            "dependencies": [
+              "20.3"
+            ],
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Ensure Cross-Device Consistency and Performance",
+            "description": "Maintain consistent feature set across iPhone/iPad/Mac with synchronized preferences",
+            "dependencies": [
+              "20.4"
+            ],
+            "status": "pending"
+          }
+        ],
+        "details": null,
+        "testStrategy": null
+      }
+    ],
+    "metadata": {
+      "created": "2025-01-11T00:00:00.000Z",
+      "updated": "2025-08-11T13:51:03.013Z",
+      "description": "Kunlun SwiftUI Zettelkasten App - Professional notes app with Core Data, CloudKit, and ultra-minimalist design"
+    }
+  }
+}

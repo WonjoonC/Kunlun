@@ -1,0 +1,70 @@
+rules_version = '2';
+
+// Firestore Security Rules for Kunlun App
+// Development configuration with least-privilege access
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Notes collection - users can only access their own notes
+    match /notes/{noteId} {
+      // Allow read/write if the user owns the note
+      allow read, write: if request.auth != null && 
+                           request.auth.uid == resource.data.userId;
+      
+      // Allow create if user is authenticated and sets their userId
+      allow create: if request.auth != null && 
+                      request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Tags collection - users can only access their own tags
+    match /tags/{tagId} {
+      allow read, write: if request.auth != null && 
+                           request.auth.uid == resource.data.userId;
+      
+      allow create: if request.auth != null && 
+                      request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Note links collection - users can only access their own links
+    match /noteLinks/{linkId} {
+      allow read, write: if request.auth != null && 
+                           request.auth.uid == resource.data.userId;
+      
+      allow create: if request.auth != null && 
+                      request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Note links collection (snake_case) - mirror of above for current app collection name
+    match /note_links/{linkId} {
+      allow read, write: if request.auth != null && 
+                           request.auth.uid == resource.data.userId;
+      
+      allow create: if request.auth != null && 
+                      request.auth.uid == request.resource.data.userId;
+    }
+    
+    // User profiles - users can only access their own profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null && 
+                           request.auth.uid == userId;
+      
+      allow create: if request.auth != null && 
+                      request.auth.uid == userId;
+    }
+    
+    // Sync metadata - users can only access their own sync data
+    match /syncMetadata/{userId} {
+      allow read, write: if request.auth != null && 
+                           request.auth.uid == userId;
+      
+      allow create: if request.auth != null && 
+                      request.auth.uid == userId;
+    }
+    
+    // Default deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

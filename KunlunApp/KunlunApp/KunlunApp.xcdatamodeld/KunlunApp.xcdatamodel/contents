@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
+    <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="none">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="modifiedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="notes" inverseEntity="Tag"/>
+        <relationship name="outgoingLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NoteLink" inverseName="source" inverseEntity="NoteLink"/>
+        <relationship name="incomingLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NoteLink" inverseName="target" inverseEntity="NoteLink"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="none">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="tags" inverseEntity="Note"/>
+    </entity>
+    <entity name="NoteLink" representedClassName="NoteLink" syncable="YES" codeGenerationType="none">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="source" optional="YES" minCount="0" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="outgoingLinks" inverseEntity="Note"/>
+        <relationship name="target" optional="YES" minCount="0" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="incomingLinks" inverseEntity="Note"/>
+    </entity>
+    <elements>
+        <element name="Note" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Tag" positionX="126" positionY="-18" width="128" height="44"/>
+        <element name="NoteLink" positionX="-63" positionY="98" width="128" height="44"/>
+    </elements>
+</model>

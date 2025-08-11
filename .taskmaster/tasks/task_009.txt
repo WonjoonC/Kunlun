@@ -1,0 +1,43 @@
+# Task ID: 9
+# Title: Build Universal Search with Full-Text Indexing
+# Status: pending
+# Dependencies: 3, 5
+# Priority: high
+# Description: Implement the high-performance search system with instant results and advanced filtering capabilities
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Create UniversalSearch UI with Search Field and Filters [pending]
+### Dependencies: None
+### Description: Build the main search interface with magnifying glass icon, search field, and filter controls
+### Details:
+
+
+## 2. Implement Full-Text Search with Core Data Predicates [pending]
+### Dependencies: 9.1
+### Description: Build the core search functionality using Core Data predicates for title and content matching
+### Details:
+
+
+## 3. Build Search Result Highlighting and Ranking System [pending]
+### Dependencies: 9.2
+### Description: Create SearchResultRow component with query highlighting and implement relevance-based ranking
+### Details:
+
+
+## 4. Integrate Advanced Filtering System [pending]
+### Dependencies: 9.1, 9.3
+### Description: Implement comprehensive filtering options including date ranges, tags, and connection density
+### Details:
+
+
+## 5. Optimize Performance for 100,000+ Notes [pending]
+### Dependencies: 9.2, 9.3, 9.4
+### Description: Implement performance optimizations to achieve <100ms search response time with large datasets
+### Details:
+
+

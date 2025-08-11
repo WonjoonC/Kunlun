@@ -1,0 +1,49 @@
+# Task ID: 1
+# Title: Setup SwiftUI Project with Core Data and CloudKit Integration
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Initialize the SwiftUI project with Core Data stack and CloudKit configuration for the Kunlun Zettelkasten app
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Create SwiftUI Project with iOS 17+ Configuration [pending]
+### Dependencies: None
+### Description: Initialize new SwiftUI project with proper iOS 17+ target configuration and basic project structure
+### Details:
+
+
+## 2. Define Core Data Model and Entity Structure [pending]
+### Dependencies: 1.1
+### Description: Create Core Data model file with Note, NoteLink, and Tag entities as specified in PRD
+### Details:
+
+
+## 3. Configure CloudKit Container and Permissions [pending]
+### Dependencies: 1.2
+### Description: Setup CloudKit container 'iCloud.com.kunlun.notes' with proper permissions and schema configuration
+### Details:
+
+
+## 4. Implement NSPersistentCloudKitContainer Setup [pending]
+### Dependencies: 1.3
+### Description: Create Core Data stack with NSPersistentCloudKitContainer for CloudKit integration
+### Details:
+
+
+## 5. Create SyncManager Class with History Tracking [pending]
+### Dependencies: 1.4
+### Description: Implement SyncManager class with CloudKit sync setup including history tracking and remote change notifications
+### Details:
+
+
+## 6. Setup SwiftUI Integration with @Model Classes and ModelContainer [pending]
+### Dependencies: 1.5
+### Description: Configure proper SwiftUI integration using @Model classes and ModelContainer for seamless data binding
+### Details:
+
+

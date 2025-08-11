@@ -1,0 +1,43 @@
+# Task ID: 18
+# Title: Phase 2: Intelligent Live Markdown Rendering with AttributedString
+# Status: pending
+# Dependencies: 17
+# Priority: critical
+# Description: Implement real-time markdown formatting with AttributedString and smart auto-completion features
+# Details:
+
+
+# Test Strategy:
+
+
+# Subtasks:
+## 1. Implement Real-Time Header Formatting [pending]
+### Dependencies: None
+### Description: Headers format instantly using AttributedString styling with proper visual hierarchy
+### Details:
+
+
+## 2. Add Bold and Italic Formatting [pending]
+### Dependencies: 18.1
+### Description: Implement bold and italic formatting with real-time NSAttributedString updates
+### Details:
+
+
+## 3. Create Code Snippet and List Formatting [pending]
+### Dependencies: 18.2
+### Description: Implement code snippets with monospace font and auto-formatting for lists
+### Details:
+
+
+## 4. Implement Blockquote and Advanced Formatting [pending]
+### Dependencies: 18.3
+### Description: Add blockquote formatting with left border using overlay() modifier and other advanced features
+### Details:
+
+
+## 5. Add Smart Auto-Completion Features [pending]
+### Dependencies: 18.4
+### Description: Implement auto-formatting for headers, lists, and other markdown elements
+### Details:
+
+
